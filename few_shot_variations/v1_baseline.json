@@ -1,0 +1,141 @@
+{
+  "id": "v1_baseline",
+  "name": "Baseline (4 per category, quartile selection)",
+  "description": "Current production selection: 4 examples per category spanning size range",
+  "selection_info": {
+    "n_per_category": 4,
+    "selection_method": "quartile",
+    "seed": 42,
+    "total_examples": 16
+  },
+  "examples": [
+    {
+      "path": "C:\\temp\\cow-experiments\\sorted_crops\\headup\\~scratch~general~vast~u6064781~HD 1~2024~AZ~Dobson~05_25_2024-06_30-2024~0215-07~101_BTCF~IMG_0624.crop_im_0093_det_0000.JPG",
+      "filename": "~scratch~general~vast~u6064781~HD 1~2024~AZ~Dobson~05_25_2024-06_30-2024~0215-07~101_BTCF~IMG_0624.crop_im_0093_det_0000.JPG",
+      "category": "head_up",
+      "width": 131,
+      "height": 104,
+      "long_side": 131
+    },
+    {
+      "path": "C:\\temp\\cow-experiments\\sorted_crops\\headup\\~scratch~general~vast~u6064781~HD 6~Montana~Mannix~6.29-7.29.2024~2205-06~IMG_1218.crop_im_0356_det_0011.JPG",
+      "filename": "~scratch~general~vast~u6064781~HD 6~Montana~Mannix~6.29-7.29.2024~2205-06~IMG_1218.crop_im_0356_det_0011.JPG",
+      "category": "head_up",
+      "width": 318,
+      "height": 281,
+      "long_side": 318
+    },
+    {
+      "path": "C:\\temp\\cow-experiments\\sorted_crops\\headup\\~scratch~general~vast~u6064781~HD 6~Montana~Paws Up~Lubrecht~6.25.24-8.11.24~CPD18~IMG_1052.crop_im_0367_det_0000.JPG",
+      "filename": "~scratch~general~vast~u6064781~HD 6~Montana~Paws Up~Lubrecht~6.25.24-8.11.24~CPD18~IMG_1052.crop_im_0367_det_0000.JPG",
+      "category": "head_up",
+      "width": 557,
+      "height": 411,
+      "long_side": 557
+    },
+    {
+      "path": "C:\\temp\\cow-experiments\\sorted_crops\\headup\\~scratch~general~vast~u6064781~HD 6~Washington~Sanders~5.19-7.21.2024~9215-33~IMG_0163.crop_im_0435_det_0000.JPG",
+      "filename": "~scratch~general~vast~u6064781~HD 6~Washington~Sanders~5.19-7.21.2024~9215-33~IMG_0163.crop_im_0435_det_0000.JPG",
+      "category": "head_up",
+      "width": 232,
+      "height": 1072,
+      "long_side": 1072
+    },
+    {
+      "path": "C:\\temp\\cow-experiments\\sorted_crops\\headdown\\~scratch~general~vast~u6064781~HD 1~2024~NM~Toriette~04_18_2024-07_04_2024~4186-18~100_BTCF~IMG_3464.crop_im_0230_det_0003.JPG",
+      "filename": "~scratch~general~vast~u6064781~HD 1~2024~NM~Toriette~04_18_2024-07_04_2024~4186-18~100_BTCF~IMG_3464.crop_im_0230_det_0003.JPG",
+      "category": "head_down",
+      "width": 93,
+      "height": 75,
+      "long_side": 93
+    },
+    {
+      "path": "C:\\temp\\cow-experiments\\sorted_crops\\headdown\\~scratch~general~vast~u6064781~2024~AZ~XD~07_18_2024-09_28_2024~0215-19~103_BTCF~IMG_0183.crop_im_0010_det_0000.JPG",
+      "filename": "~scratch~general~vast~u6064781~2024~AZ~XD~07_18_2024-09_28_2024~0215-19~103_BTCF~IMG_0183.crop_im_0010_det_0000.JPG",
+      "category": "head_down",
+      "width": 130,
+      "height": 184,
+      "long_side": 184
+    },
+    {
+      "path": "C:\\temp\\cow-experiments\\sorted_crops\\headdown\\~scratch~general~vast~u6064781~HD 1~2024~OR~Nash~05_30_2024-07_26_2024~9215-42~100_BTCF~IMG_0089.crop_im_0292_det_0001.JPG",
+      "filename": "~scratch~general~vast~u6064781~HD 1~2024~OR~Nash~05_30_2024-07_26_2024~9215-42~100_BTCF~IMG_0089.crop_im_0292_det_0001.JPG",
+      "category": "head_down",
+      "width": 446,
+      "height": 268,
+      "long_side": 446
+    },
+    {
+      "path": "C:\\temp\\cow-experiments\\sorted_crops\\headdown\\~scratch~general~vast~u6064781~HD 6~Washington~Singers~7.20.24 - 8.29.24~4216-06~100_BTCF~IMG_0555.crop_im_0487_det_0000.JPG",
+      "filename": "~scratch~general~vast~u6064781~HD 6~Washington~Singers~7.20.24 - 8.29.24~4216-06~100_BTCF~IMG_0555.crop_im_0487_det_0000.JPG",
+      "category": "head_down",
+      "width": 512,
+      "height": 928,
+      "long_side": 928
+    },
+    {
+      "path": "C:\\temp\\cow-experiments\\sorted_crops\\running\\~scratch~general~vast~u6064781~HD 1~2024~NM~Toriette~04_18_2024-07_04_2024~0215-53~102_BTCF~IMG_0929.crop_im_0213_det_0001.JPG",
+      "filename": "~scratch~general~vast~u6064781~HD 1~2024~NM~Toriette~04_18_2024-07_04_2024~0215-53~102_BTCF~IMG_0929.crop_im_0213_det_0001.JPG",
+      "category": "running",
+      "width": 130,
+      "height": 181,
+      "long_side": 181
+    },
+    {
+      "path": "C:\\temp\\cow-experiments\\sorted_crops\\running\\~scratch~general~vast~u6064781~randos sort~Bear_Canyon_Tor_spring2025~0215-61~DCIM~100_BTCF~IMG_0314.crop_im_0495_det_0000.JPG",
+      "filename": "~scratch~general~vast~u6064781~randos sort~Bear_Canyon_Tor_spring2025~0215-61~DCIM~100_BTCF~IMG_0314.crop_im_0495_det_0000.JPG",
+      "category": "running",
+      "width": 305,
+      "height": 263,
+      "long_side": 305
+    },
+    {
+      "path": "C:\\temp\\cow-experiments\\sorted_crops\\running\\~scratch~general~vast~u6064781~HD 6~Oregon~Nash~7.26.24 - 9.25.24~1215-101~IMG_0425.crop_im_0413_det_0002.JPG",
+      "filename": "~scratch~general~vast~u6064781~HD 6~Oregon~Nash~7.26.24 - 9.25.24~1215-101~IMG_0425.crop_im_0413_det_0002.JPG",
+      "category": "running",
+      "width": 348,
+      "height": 606,
+      "long_side": 606
+    },
+    {
+      "path": "C:\\temp\\cow-experiments\\sorted_crops\\running\\~scratch~general~vast~u6064781~2024~MT~Iverson~08_15_2024-10_10_2024~9111-01~100RECNX~IMG_1549.crop_im_0019_det_0000.JPG",
+      "filename": "~scratch~general~vast~u6064781~2024~MT~Iverson~08_15_2024-10_10_2024~9111-01~100RECNX~IMG_1549.crop_im_0019_det_0000.JPG",
+      "category": "running",
+      "width": 1016,
+      "height": 565,
+      "long_side": 1016
+    },
+    {
+      "path": "C:\\temp\\cow-experiments\\sorted_crops\\unknown\\~scratch~general~vast~u6064781~2024~OR~Nash~09_25_2024-10_21_2024~0215-77~100_BTCF~IMG_0034.crop_im_0062_det_0005.JPG",
+      "filename": "~scratch~general~vast~u6064781~2024~OR~Nash~09_25_2024-10_21_2024~0215-77~100_BTCF~IMG_0034.crop_im_0062_det_0005.JPG",
+      "category": "unknown",
+      "width": 111,
+      "height": 157,
+      "long_side": 157
+    },
+    {
+      "path": "C:\\temp\\cow-experiments\\sorted_crops\\unknown\\~scratch~general~vast~u6064781~HD 1~2024~AZ~XD~04_22_2024-06_28_2024~1228-112~100_BTCF~IMG_0981.crop_im_0135_det_0002.JPG",
+      "filename": "~scratch~general~vast~u6064781~HD 1~2024~AZ~XD~04_22_2024-06_28_2024~1228-112~100_BTCF~IMG_0981.crop_im_0135_det_0002.JPG",
+      "category": "unknown",
+      "width": 426,
+      "height": 389,
+      "long_side": 426
+    },
+    {
+      "path": "C:\\temp\\cow-experiments\\sorted_crops\\unknown\\~scratch~general~vast~u6064781~HD 1~2024~AZ~Dobson~05_25_2024-06_30-2024~0215-07~102_BTCF~IMG_0074.crop_im_0094_det_0000.JPG",
+      "filename": "~scratch~general~vast~u6064781~HD 1~2024~AZ~Dobson~05_25_2024-06_30-2024~0215-07~102_BTCF~IMG_0074.crop_im_0094_det_0000.JPG",
+      "category": "unknown",
+      "width": 584,
+      "height": 880,
+      "long_side": 880
+    },
+    {
+      "path": "C:\\temp\\cow-experiments\\sorted_crops\\unknown\\~scratch~general~vast~u6064781~HD 1~2024~AZ~Dobson~05_25_2024-06_30-2024~9215-05~100_BTCF~IMG_0292.crop_im_0102_det_0000.JPG",
+      "filename": "~scratch~general~vast~u6064781~HD 1~2024~AZ~Dobson~05_25_2024-06_30-2024~9215-05~100_BTCF~IMG_0292.crop_im_0102_det_0000.JPG",
+      "category": "unknown",
+      "width": 2389,
+      "height": 2083,
+      "long_side": 2389
+    }
+  ]
+}
