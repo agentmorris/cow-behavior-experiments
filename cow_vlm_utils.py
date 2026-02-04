@@ -706,7 +706,8 @@ def save_results(results, output_path, model_name, processing_method,
                  image_max_size=DEFAULT_IMAGE_MAX_SIZE,
                  query_batch_size=DEFAULT_QUERY_BATCH_SIZE,
                  few_shot_file=None,
-                 few_shot_examples=None):
+                 few_shot_examples=None,
+                 prompt_file=None):
     """
     Save classification results to a JSON file.
 
@@ -721,6 +722,7 @@ def save_results(results, output_path, model_name, processing_method,
         few_shot_examples: list of few-shot example dicts (from
             load_few_shot_examples); stored in the output JSON so
             visualizations can display the example images
+        prompt_file: path to the prompt variation file used (if any)
     """
 
     successful = [r for r in results if r.get('success', False)]
@@ -739,6 +741,7 @@ def save_results(results, output_path, model_name, processing_method,
             'image_max_size': image_max_size,
             'query_batch_size': query_batch_size,
             'few_shot_file': few_shot_file,
+            'prompt_file': prompt_file,
             'total_query_images': len(results),
             'successful_predictions': len(successful),
             'failed_predictions': len(failed),

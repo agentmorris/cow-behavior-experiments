@@ -920,7 +920,8 @@ def main():
             save_results(
                 all_results, output_path, metadata['model'],
                 'batch_api', args.image_size, args.query_batch_size,
-                args.few_shot_file, resume_few_shot
+                args.few_shot_file, resume_few_shot,
+                prompt_file=args.prompt_file
             )
         except Exception as e:
             print('Error during resume: {}'.format(e))
@@ -1097,7 +1098,8 @@ def main():
         save_results(
             all_results, output_path, args.model,
             'synchronous_api', args.image_size, args.query_batch_size,
-            args.few_shot_file, few_shot_examples
+            args.few_shot_file, few_shot_examples,
+            prompt_file=args.prompt_file
         )
 
         # Clean up checkpoint
@@ -1152,7 +1154,8 @@ def main():
         save_results(
             all_results, output_path, args.model,
             'batch_api', args.image_size, args.query_batch_size,
-            args.few_shot_file, few_shot_examples
+            args.few_shot_file, few_shot_examples,
+            prompt_file=args.prompt_file
         )
 
 # ...def main()

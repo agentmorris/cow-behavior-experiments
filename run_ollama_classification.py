@@ -797,7 +797,8 @@ def main():
     save_results(
         all_results, output_path, args.model,
         'ollama', args.image_size, args.query_batch_size,
-        args.few_shot_file, few_shot_examples
+        args.few_shot_file, few_shot_examples,
+        prompt_file=args.prompt_file
     )
 
     # Clean up checkpoint

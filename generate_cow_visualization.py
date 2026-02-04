@@ -783,6 +783,16 @@ def generate_single_model_html(json_path, output_html_path,
     prompt_id = experiment_info.get('prompt_id')
     prompt_name = experiment_info.get('prompt_name')
 
+    # Try to extract prompt_id from run_info.prompt_file path
+    if not prompt_id:
+        prompt_file = run_info.get('prompt_file', '')
+        if prompt_file:
+            # Extract ID from path like ".../prompt_variations/v5_negative_guidance.json"
+            import re
+            match = re.search(r'prompt_variations[/\\]([^/\\]+)\.json$', prompt_file)
+            if match:
+                prompt_id = match.group(1)
+
     # If prompt not embedded in results, try to load from prompt_variations file
     if not system_prompt and prompt_id:
         prompt_data = _load_prompt_from_file(prompt_id)
