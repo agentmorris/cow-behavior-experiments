@@ -1,0 +1,10 @@
+# Cattle behavior VLM classification dependencies
+
+# Image processing
+Pillow>=11.3.0
+
+# Gemini API (google.genai unified SDK)
+google-genai>=1.38.0
+
+# HTTP requests (for Ollama)
+requests>=2.31.0

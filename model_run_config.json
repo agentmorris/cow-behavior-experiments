@@ -1,0 +1,49 @@
+{
+  "description": "Configuration for running all models with specific prompt and few-shot variations",
+  "default_prompt": "v5_negative_guidance",
+  "default_few_shot": "v5_different_seed",
+  "models": [
+    {
+      "name": "gemini-3-flash-preview",
+      "type": "gemini"
+    },
+    {
+      "name": "qwen2.5vl:32b",
+      "type": "ollama",
+      "few_shot": "v3_fewer_examples"
+    },
+    {
+      "name": "qwen2.5vl:7b",
+      "type": "ollama",
+      "few_shot": "v3_fewer_examples"
+    },
+    {
+      "name": "qwen3-vl:32b",
+      "type": "ollama"
+    },
+    {
+      "name": "qwen3-vl:8b",
+      "type": "ollama"
+    },
+    {
+      "name": "gemma3:27b",
+      "type": "ollama"
+    },
+    {
+      "name": "gemma3:12b",
+      "type": "ollama"
+    },
+    {
+      "name": "mistral-small3.2:24b",
+      "type": "ollama"
+    },
+    {
+      "name": "ministral-3:14b",
+      "type": "ollama"
+    },
+    {
+      "name": "ministral-3:8b",
+      "type": "ollama"
+    }
+  ]
+}

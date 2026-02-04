@@ -1,3 +1,12 @@
+# AI stuff
+GEMINI_API_KEY.txt
+gemini_key.txt
+.key
+.env
+.claude
+.gemini
+nul
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[codz]

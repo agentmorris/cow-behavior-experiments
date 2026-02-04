@@ -1,0 +1,89 @@
+I am supporting a group of ecologists who want to use AI to assess the alertness level of cattle in camera trap images.  I already have tools that can identify cattle in those images and crop the cattle out of the images, and I am trying to assess whether training a model is necessary, or whether VLMs can already categorize individual cattle into the behavioral categories they have identified.  My colleagues have already labeled around 1000 individual cows (representing ~500 camera trap images) according to the following behavioral categories:
+
+* Head up
+* Head down
+* Running
+* Unknown
+
+The "unknown" category includes cases where, e.g., the cow's head is obstructed or out of frame, so it's not possible to tell "head up" from "head down".
+
+I cropped those cows out from the original images, and put them in subfolders here:
+
+C:\temp\cow-experiments\sorted_crops
+
+That folder contains subfolders called "headdown", "headup", "running", and "unknown", each of which is a flat folder of images.
+
+Because the images are cropped out of larger images, some are very small (e.g. 100 pixels on a side), and some are very large (e.g. 3000 pixels on a side).
+
+Today, I want you to write code that allows me to assess the performs of VLMs on this task.  I want to try the following models:
+
+* Gemini 3.0 Pro
+* Gemini 3.0 Flash
+* Several open-weights VLMs (accessed via Ollama), especially qwen3-VL:32b and qwen2.5vl:72b
+
+Speed is not a major issue, I am only submitting O(hundreds) of images for now.  We should make reasonable efforts to include multiple images in a query, but we don't have to try to optimize extensively for either speed or cost.
+
+I worked with Claude on a previous project that submitted visual tasks to both Gemini models and open-weights models (via Ollama), and I was quite happy with the resulting interface, so I'd like you to review that code base and draw inspiration from it; we iterated on a bunch of things that I'd like to avoid figuring out again from scratch. 
+
+Take a look at this folder:
+
+C:\git\hero-images
+
+Especially check out the README, and everything in the "hero_images" folder.
+
+Some features I would like to preserve from that project:
+
+* I placed a gemini key in a local file that was used by the code to make Gemini queries.
+* I was able to use both the batch and synchronous Gemini APIs, based on a command-line switch.
+* I was given a cost estimate before submitting jobs to Gemini.
+* I could cancel batch jobs that had been submitted to Gemini.
+* For both open-weights and Gemini jobs, we implemented a basic checkpointing system that would allow me to re-start if a job was interrupted, without losing results that had already been computed.
+* We implemented good support for outputting an HTML preview file that made it very easy to see the output.  That project was not a traditional image classification project, so the output format will be different for the present project, but I'd like to keep the spirit of the output: a big HTML table is a very efficient way for me to review images and associated HTML results.
+
+Specifically, for today's project, I want you to:
+
+* Choose around four images from each of the four behavioral categories to use as few-shot examples in your prompts.  Choose images that represent a range of sizes (it may help for you to run a one-time script to get the image sizes of every image, and write that to a .json file).  Write the files you choose as few-shot prompts to a .json file so we can consistently use the same images as part of the prompt.
+* Write modules that can be run via Python or via the command line to send those few-shot examples and query images to Gemini or to Ollama.
+* Write a test module that runs all the images (except the images used in few-shot prompting) through Gemini 3.0 Pro, Gemini 3.0 Flash, qwen3-VL:32b, and qwen2.5vl:72b, and compares the accuracy across those models.
+
+Images larger than 750 pixels on the long side can be downsized prior to submission to an LLM.  If you find that a lower ceiling would make a meaningful difference (e.g. if it would be much easier if I gave you a ceiling of 500px), check with me.
+
+You are running in a conda environment; pip-install anything you need, but track requirements in a requirements.txt file.
+
+Write any results, temporary files, cached information, etc. to this folder (or subfolders of this folder):
+
+C:\temp\cow-experiments\cow-vlm-experiments
+
+My recollection is that ollama is run as a server, and the models we want to test are installed prior to calling them.  Don't install models or run the ollama server on your own, instead, give me instructions for doing that in another shell.
+
+I am not going to be a stickler for coding conventions today, but to the extent that it's practical, please use the coding conventions available in this file:
+
+c:\git\MegaDetector\developers.md
+
+I am not in a rush.  Throughout this session, err on the side of asking me clarifying questions.  If I provide file names, folder names, or URLs that appear to be incorrect, always check with me, don't try to work around it.
+
+
+## Models to try
+
+ministral-3:8b
+qwen3-vl:8b
+qwen2.5vl:7b
+llama3.2-vision:11b
+gemma3:12b
+ministral-3:14b
+mistral-small3.2:24b
+gemma3:27b
+qwen3-vl:32b
+qwen2.5vl:32b
+
+
+--
+
+First, generate the visualization pages for the results so far, including the comparison page.
+
+Then, we are going to do some debugging, and before we do that, I want to make sure that some debug information is available in the .json files.  I have not looked at them, so maybe these things are already available, but make sure that a results file includes (1) the raw, unparsed output from every query (regardless of whether parsing succeeded, and (2) enough information to re-create the groups of images that were submitted (so we can more easily re-create individual failures).
+
+Then, look into the double-log-file situation.  This seems like a bug that is not related to the parsing failures, but it's suspicious, so let's fix this first.
+
+Then, look into the parsing failures.  You should (1) look closely for client-side bugs or easy fixes to common format errors (this will be easier if we're logging the raw output), (2) depending on the kinds of issues you see in the raw output, consider experimenting with your prompts, e.g. using stronger prompts like "you MUST return data in format xyz", or "do not include ``` before json" or "if I give you N images, you MUST return N responses", or whatever encouragement models might need to comply with the format requirements, then (3) implement logic that re-tries failed images up to N times at the end of a job (i.e., after trying all images once), where N defaults to 4.  Do these experiments with open-weights models first, so you don't have to worry about cost.  Then lastly, if some models are still failing frequently, e.g., qwen3-VL:8b, I am willing to revisit my goal of doing images in batches, maybe it will help these issues if we do one image at a time.  But (1), (2), and (3) will generally make the code more robust, so let's work on those things first before we revert to a single-image-per-query approach.
+
