@@ -776,38 +776,26 @@ def generate_single_model_html(json_path, output_html_path,
     ).format(metrics['failed_predictions'])
     html += '</div>\n</div>\n'
 
-    # System prompt (if available)
+    # System prompt: load directly from the prompt_file path in run_info
     run_info = data.get('run_info', {})
     experiment_info = data.get('experiment_info', {})
-    system_prompt = run_info.get('system_prompt') or experiment_info.get('system_prompt')
-    prompt_id = experiment_info.get('prompt_id')
-    prompt_name = experiment_info.get('prompt_name')
+    system_prompt = None
+    prompt_id = None
+    prompt_name = None
 
-    # Try to extract prompt_id from run_info.prompt_file path
-    if not prompt_id:
-        prompt_file = run_info.get('prompt_file', '')
-        if prompt_file:
-            # Extract ID from path like ".../prompt_variations/v5_negative_guidance.json"
-            import re
-            match = re.search(r'prompt_variations[/\\]([^/\\]+)\.json$', prompt_file)
-            if match:
-                prompt_id = match.group(1)
-
-    # If prompt not embedded in results, try to load from prompt_variations file
-    if not system_prompt and prompt_id:
-        prompt_data = _load_prompt_from_file(prompt_id)
-        if prompt_data:
+    prompt_file = run_info.get('prompt_file', '')
+    if prompt_file and os.path.exists(prompt_file):
+        try:
+            with open(prompt_file, 'r') as f:
+                prompt_data = json.load(f)
             system_prompt = prompt_data.get('system_prompt')
-            if not prompt_name:
-                prompt_name = prompt_data.get('name')
-
-    # For regular runs without experiment prompt, use the baseline prompt
-    if not system_prompt:
-        prompt_data = _load_prompt_from_file('v1_baseline')
-        if prompt_data:
-            system_prompt = prompt_data.get('system_prompt')
+            prompt_id = prompt_data.get('id')
             prompt_name = prompt_data.get('name')
-            prompt_id = 'v1_baseline'
+        except Exception:
+            pass
+
+    if not system_prompt:
+        system_prompt = '(unknown - prompt_file not found in run_info)'
 
     html += _build_prompt_html(system_prompt, prompt_id, prompt_name)
 

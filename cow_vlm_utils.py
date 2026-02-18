@@ -30,6 +30,8 @@ VALID_CATEGORIES = ['head_up', 'head_down', 'running', 'unknown']
 CATEGORY_FOLDER_MAP = {
     'headdown': 'head_down',
     'headup': 'head_up',
+    'head_down': 'head_down',
+    'head_up': 'head_up',
     'running': 'running',
     'unknown': 'unknown'
 }

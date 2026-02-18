@@ -464,6 +464,7 @@ cow-vlm-experiments/
 - **No category leakage**: Images are sent as base64 bytes only; file paths (which contain category folder names) are never included in prompts.
 - **Output compatibility**: All classification scripts produce identical JSON format for evaluation and visualization.
 - **Checkpointing**: Atomic write pattern (backup -> delete -> rename) prevents checkpoint corruption on interruption.
+- **Unbuffered output**: When running classification scripts in the background (e.g., from an automated agent), use `python -u` to disable output buffering. Otherwise, stdout is buffered and progress output won't be visible until the script completes. Example: `python -u run_gemini_classification.py --sync -y ...`
 
 ## Frequently-used commands
 
