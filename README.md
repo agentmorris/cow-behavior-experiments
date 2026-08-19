@@ -354,27 +354,6 @@ Five few-shot selection strategies were tested, all using the baseline prompt:
 | `v4_largest_images` | 4 largest images per category (by pixel dimensions) |
 | `v5_different_seed` | Different random selection (seed=42 vs baseline seed=12345) |
 
-### Results summary
-
-Experiments were run on 4 models: gemini-3-flash-preview, qwen2.5vl:32b, gemma3:27b, and mistral-small3.2:24b.
-
-**Best overall result:** mistral-small3.2:24b with baseline prompt and fewer examples (8 total) achieved **60.0% accuracy** -- the highest across all 36 experiments.
-
-**Best configuration per model:**
-
-| Model | Best Prompt | Best Few-shot | Accuracy |
-|-------|-------------|---------------|----------|
-| mistral-small3.2:24b | v1_baseline | v3_fewer_examples | 60.0% |
-| gemma3:27b | v4_chain_of_thought | v1_baseline | 55.0% |
-| gemini-3-flash-preview | v5_negative_guidance | v1_baseline | 51.7% |
-| qwen2.5vl:32b | v3_explicit_examples | v1_baseline | 40.0% |
-
-**Key findings:**
-- Fewer few-shot examples (8 instead of 16) improved mistral-small3.2 significantly (33.3% → 60.0%)
-- Chain-of-thought and negative guidance prompts helped gemma3 and Gemini respectively
-- More examples (24 total) generally hurt performance across all models
-- Different random seeds for few-shot selection had minimal impact
-
 ### Experiment scripts
 
 - **`sample_experiment_images.py`** - Sample balanced test set from model results
